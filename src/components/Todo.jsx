@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 import TodoHd from './TodoHd';
 import TodoEditor from './TodoEditor';
 import TodoList from './TodoList';
-import { mockTodoData } from '@/data/todoData';
 
 const Todo = () => {
   const [todos, setTodos] = useState([]);
