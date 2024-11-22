@@ -8,18 +8,14 @@ import TodoList from './TodoList';
 const Todo = () => {
   const [todos, setTodos] = useState([]);
 
-  // 마운트 시
   useEffect(() => {
-    // localStorage의 데이터를 가져와
     const savedTodos = JSON.parse(localStorage.getItem('todos')) || [];
-    // todos 상태에 저장
+
     setTodos(savedTodos);
     console.log(savedTodos);
   }, []);
 
-  // 업데이트 시
   useEffect(() => {
-    // localStorage에 데이터를 저장
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
 
