@@ -21,11 +21,25 @@ const Todo = () => {
     setTodos([newTodo, ...todos]);
   };
 
+  // 완료 표시 함수
+  const onUpdate = (id) => {
+    setTodos(
+      todos.map((todo) => {
+        return todo.id === id ? { ...todo, isDone: !todo.isDone } : todo;
+      })
+    );
+  };
+
+  // 할 일 삭제 함수
+  const onDelete = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
   return (
-    <div>
+    <div className='m-5 p-5 flex flex-col gap-5 border border-gray-300'>
       <TodoHd />
       <TodoEditor addTodo={addTodo} />
-      <TodoList mockTodoData={todos} />
+      <TodoList mockTodoData={todos} onUpdate={onUpdate} onDelete={onDelete} />
     </div>
   );
 };

@@ -1,15 +1,26 @@
 import React from 'react';
+import classNames from 'classnames';
 
-const TodoItem = ({ isDone, task, createDate }) => {
+const TodoItem = ({ id, isDone, task, createDate, onUpdate, onDelete }) => {
   return (
-    <div>
-      <li>
-        <input type='checkbox' checked={isDone} />
-        <strong>{task}</strong>
-        <span>{createDate}</span>
-        <button>삭제</button>
-      </li>
-    </div>
+    <li key={id} className='flex gap-3 items-center'>
+      <input
+        type='checkbox'
+        checked={isDone}
+        onChange={() => {
+          onUpdate(id);
+        }}
+      />
+      <strong className={classNames('text-lg', isDone ? 'line-through' : null)}>{task}</strong>
+      <span className='ml-auto text-sm text-gray-400'>{createDate}</span>
+      <button
+        onClick={() => {
+          onDelete(id);
+        }}
+      >
+        삭제
+      </button>
+    </li>
   );
 };
 
