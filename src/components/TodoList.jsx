@@ -2,16 +2,12 @@ import React, { useState } from 'react';
 import TodoItem from './TodoItem';
 
 const TodoList = ({ mockTodoData, onUpdate, onDelete }) => {
-  // console.log(mockTodoData);
   const [search, setSearch] = useState('');
 
   const filteredTodos = () => {
-    return (
-      // array.filter(function(currentValue, index, arr), thisValue)
-      mockTodoData.filter((item) => {
-        return item.task.toLowerCase().includes(search.toLowerCase());
-      })
-    );
+    return mockTodoData.filter((item) => {
+      return item.task.toLowerCase().includes(search.toLowerCase());
+    });
   };
 
   return (
